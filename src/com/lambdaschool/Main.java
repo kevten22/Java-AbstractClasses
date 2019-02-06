@@ -3,6 +3,15 @@ import java.util.ArrayList;
 
 public class Main {
 
+    public static void printAnimals(ArrayList<AbstractAnimal> vehicles, CheckAnimal tester){
+        for( AbstractAnimal v: vehicles){
+            if(tester.test(v))
+            {
+                System.out.println(v.getName());
+            }
+        }
+    }
+
     public static void main(String[] args) {
 	// write your code here
     ArrayList<AbstractAnimal> zoo = new ArrayList<AbstractAnimal>();
@@ -27,6 +36,31 @@ public class Main {
     zoo.add(new Fish("Salmon", 1758));
     zoo.add(new Fish("Catfish", 1817));
     zoo.add(new Fish("Perch", 1758));
+
+    //Sorts and prints by year named in descending order
+    zoo.sort((v1, v2) -> v2.getYearDiscovered() - v1.getYearDiscovered());
+    zoo.forEach((v) -> System.out.println(v.getYearDiscovered()));
+
+    //Sorts and prints by animal names alphabetically
+    zoo.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+    zoo.forEach((v) -> System.out.println(v.getName()));
+
+    //Sorts and prints by how animals move
+    zoo.sort((v1,v2) -> v1.move().compareToIgnoreCase(v2.move()));
+    zoo.forEach((v) -> System.out.println(v.getName() + ": " + v.move()));
+
+    System.out.println("Animals that breathe with lungs:");;
+    printAnimals(zoo, v -> v.breath().equals("lungs"));
+
+    System.out.println("Animals that breath with lungs and named in 1758:");
+    printAnimals(zoo, v -> (v.breath().equals("lungs") && v.getYearDiscovered() == 1758));
+
+    System.out.println("Animals that lay eggs and breath with lungs:");
+    printAnimals(zoo, v -> (v.breath().equals("lungs") && v.reproduce().equals("eggs")));
+
+    System.out.println("Animals named in 1758 in alphabetical order:");
+    zoo.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+    printAnimals(zoo, v -> v.getYearDiscovered() == 1758);
 
     }
 }

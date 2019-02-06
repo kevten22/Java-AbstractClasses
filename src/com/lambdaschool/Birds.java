@@ -1,13 +1,13 @@
 package com.lambdaschool;
 
-public class Mammal extends AbstractAnimal{
-    public Mammal(String name, int yearDiscovered) {
+public class Birds extends AbstractAnimal{
+    public Birds(String name, int yearDiscovered) {
         super(name, yearDiscovered);
     }
 
     @Override
     public String move() {
-        return "walk";
+        return "fly";
     }
 
     @Override
@@ -17,6 +17,6 @@ public class Mammal extends AbstractAnimal{
 
     @Override
     public String reproduce() {
-        return "live births";
+        return "eggs";
     }
 }

@@ -1,22 +1,22 @@
 package com.lambdaschool;
 
-public class Mammal extends AbstractAnimal{
-    public Mammal(String name, int yearDiscovered) {
+public class Fish extends AbstractAnimal{
+    public Fish(String name, int yearDiscovered) {
         super(name, yearDiscovered);
     }
 
     @Override
     public String move() {
-        return "walk";
+        return "swim";
     }
 
     @Override
     public String breath() {
-        return "lungs";
+        return "gills";
     }
 
     @Override
     public String reproduce() {
-        return "live births";
+        return "eggs";
     }
 }
